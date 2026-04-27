@@ -43,3 +43,9 @@ Hook `cron/daily_checks.php` directly into your OS `crontab -e`:
 ```bash
 0 2 * * * php /var/www/pharma-stock/backend/cron/daily_checks.php
 ```
+
+## API Documentation (Swagger)
+The platform features an automated, strictly object-oriented **Swagger API Pipeline**. Zircote parses the PHP 8 codebase directly pulling DocBlocks and Attributes into a beautifully orchestrated frontend.
+Assuming your backend sits at `http://localhost:8000/api.php`:
+1. Navigating to `/api.php/docs/ui` natively initializes the interactive Swagger mapping block.
+2. Navigating to `/api.php/docs/json` streams the underlying pure OpenAPI 3.0 string for your specific integrations.
