@@ -9,7 +9,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // But let's handle the string matching manually based on the guide's endpoints.
 
 // Ensure basic variables are parsed
-$path = preg_replace('#^(/pharma-stock-api)?/api/#', '', $uri); // Clean prefix
+$path = preg_replace('#^(.*?/api\.php|.*?/api)/#', '', $uri); // Clean prefix
 $parts = explode('/', trim($path, '/'));
 
 $resource = $parts[0] ?? '';
@@ -156,6 +156,72 @@ switch ($resource) {
 
     case 'notifications':
         require_once __DIR__ . '/../controllers/NotificationController.php';
+        break;
+
+    case 'docs':
+        if ($method === 'GET' && $id === 'json') {
+            try {
+                ob_start();
+                require_once __DIR__ . '/../vendor/autoload.php';
+                
+                // Safely load only OOP controllers to avoid procedural scripts returning 404
+                $controllersToLoad = [
+                    'OpenApiSpec.php', 'AuthController.php', 'MedicineController.php',
+                    'BatchController.php', 'ExpiryController.php', 'OrderController.php',
+                    'ReportController.php', 'DatabaseController.php'
+                ];
+                foreach ($controllersToLoad as $cF) {
+                    if (file_exists(__DIR__ . '/../controllers/' . $cF)) {
+                        require_once __DIR__ . '/../controllers/' . $cF;
+                    }
+                }
+
+                $generator = new \OpenApi\Generator();
+                $openapi = $generator->generate([__DIR__ . '/../controllers']);
+                $debugLogs = ob_get_clean(); // Capture stray PHP notices
+                
+                header('Content-Type: application/json');
+                $json = $openapi ? $openapi->toJson() : '{"error": "Generator completely failed"}';
+                echo $json;
+                exit;
+            } catch (\Throwable $e) {
+                ob_get_clean();
+                header('Content-Type: application/json');
+                echo json_encode([
+                    "error" => "OpenAPI Compilation Exception",
+                    "message" => $e->getMessage(),
+                    "file" => $e->getFile(),
+                    "line" => $e->getLine()
+                ]);
+                exit;
+            }
+        } elseif ($method === 'GET' && $id === 'ui') {
+            header('Content-Type: text/html');
+            echo <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PharmaStock Swagger Docs</title>
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+</head>
+<body>
+<div id="swagger-ui"></div>
+<script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js" crossorigin></script>
+<script>
+  window.onload = () => {
+    window.ui = SwaggerUIBundle({
+      url: window.location.pathname.replace('/ui', '/json'),
+      dom_id: '#swagger-ui',
+    });
+  };
+</script>
+</body>
+</html>
+HTML;
+        } else {
+            response(404, false, null, 'Endpoint not found');
+        }
         break;
 
     default:

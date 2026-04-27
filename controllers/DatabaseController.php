@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../helpers/response.php';
 require_once __DIR__ . '/../middleware/auth.php';
+use OpenApi\Attributes as OA;
 
 class DatabaseController {
     private $pdo;
@@ -10,6 +11,13 @@ class DatabaseController {
         $this->pdo = $pdo;
     }
 
+    #[OA\Get(
+        path: "/database/backup",
+        summary: "Download Full SQL Backup",
+        tags: ["System Administration"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Stream payload of complete MySQL script")]
+    )]
     public function backup() {
         authenticate(['admin']);
         
@@ -49,6 +57,17 @@ class DatabaseController {
         exit;
     }
 
+    #[OA\Post(
+        path: "/database/restore",
+        summary: "Execute SQL Recovery Payload",
+        tags: ["System Administration"],
+        security: [["bearerAuth" => []]],
+        requestBody: new OA\RequestBody(required: true, content: new OA\MediaType(
+            mediaType: "multipart/form-data",
+            schema: new OA\Schema(properties: [new OA\Property(property: "backup_file", type: "string", format: "binary")])
+        )),
+        responses: [new OA\Response(response: 200, description: "Database thoroughly overwritten with snapshot logic")]
+    )]
     public function restore() {
         authenticate(['admin']);
         if (!isset($_FILES['backup_file'])) {

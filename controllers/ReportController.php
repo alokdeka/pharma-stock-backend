@@ -1,4 +1,5 @@
 <?php
+use OpenApi\Attributes as OA;
 
 class ReportController {
     private $pdo;
@@ -7,6 +8,13 @@ class ReportController {
         $this->pdo = $pdo;
     }
 
+    #[OA\Get(
+        path: "/reports/inventory",
+        summary: "Full System Inventory Valuation",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Extracted full multi-query inventory aggregates")]
+    )]
     public function inventory() {
         authenticate(['admin', 'manager']);
 
@@ -21,6 +29,13 @@ class ReportController {
         response(200, true, $stmt->fetchAll(), 'Inventory report retrieved');
     }
 
+    #[OA\Get(
+        path: "/reports/expiry-summary",
+        summary: "Heatmap Expiry Distributions",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Totalized aggregate breakdown of Red/Yellow/Green items")]
+    )]
     public function expirySummary() {
         authenticate();
 
@@ -42,6 +57,14 @@ class ReportController {
         response(200, true, $summary, 'Expiry summary retrieved');
     }
 
+    #[OA\Get(
+        path: "/reports/batch-sales",
+        summary: "Filter Transactions by exact Batch",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        parameters: [new OA\Parameter(name: "batch_number", in: "query", required: true, schema: new OA\Schema(type: "string"))],
+        responses: [new OA\Response(response: 200, description: "Cross-referenced sales analytics for batch")]
+    )]
     public function batchSales($batch_number) {
         authenticate(['admin', 'manager']);
 
@@ -62,6 +85,17 @@ class ReportController {
         response(200, true, $stmt->fetchAll(), 'Batch sales retrieved');
     }
 
+    #[OA\Get(
+        path: "/reports/transactions",
+        summary: "Extract Generic Ledger Period",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        parameters: [
+            new OA\Parameter(name: "from", in: "query", required: true, schema: new OA\Schema(type: "string", format: "date")),
+            new OA\Parameter(name: "to", in: "query", required: true, schema: new OA\Schema(type: "string", format: "date"))
+        ],
+        responses: [new OA\Response(response: 200, description: "Total chronological database transactions")]
+    )]
     public function transactions($from, $to) {
         authenticate(['admin', 'manager']);
 
@@ -83,6 +117,13 @@ class ReportController {
         response(200, true, $stmt->fetchAll(), 'Transactions report retrieved');
     }
 
+    #[OA\Get(
+        path: "/reports/sales-trend",
+        summary: "Retrieve recent 7-day Sales Volume Graph",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Dynamic Charting vector metrics generated")]
+    )]
     public function salesTrend() {
         authenticate();
 
@@ -97,6 +138,13 @@ class ReportController {
         response(200, true, $stmt->fetchAll(PDO::FETCH_ASSOC), 'Sales trend retrieved');
     }
 
+    #[OA\Get(
+        path: "/reports/financials",
+        summary: "Fetch Current Accounting PnL",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Raw computed arrays of Revenue, Loss, COGS")]
+    )]
     public function financials() {
         authenticate(['admin', 'manager']);
         

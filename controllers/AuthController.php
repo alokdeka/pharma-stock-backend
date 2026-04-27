@@ -1,5 +1,6 @@
 <?php
 use Firebase\JWT\JWT;
+use OpenApi\Attributes as OA;
 
 class AuthController {
     private $pdo;
@@ -8,6 +9,26 @@ class AuthController {
         $this->pdo = $pdo;
     }
 
+    #[OA\Post(
+        path: "/auth/login",
+        summary: "Authenticate User",
+        tags: ["Authentication"],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["email", "password"],
+                properties: [
+                    new OA\Property(property: "email", type: "string", format: "email", example: "admin@pharma.com"),
+                    new OA\Property(property: "password", type: "string", format: "password", example: "admin123")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 200, description: "Successful Authentication returning JWT payload"),
+            new OA\Response(response: 400, description: "Missing email or password"),
+            new OA\Response(response: 401, description: "Invalid Credentials")
+        ]
+    )]
     public function login($input) {
         $email = $input['email'] ?? '';
         $password = $input['password'] ?? '';
@@ -41,6 +62,14 @@ class AuthController {
         }
     }
 
+    #[OA\Post(
+        path: "/auth/logout",
+        summary: "Destroy Session",
+        tags: ["Authentication"],
+        responses: [
+            new OA\Response(response: 200, description: "Successfully purged token")
+        ]
+    )]
     public function logout() {
         // Stateless JWT logout implies the client should drop the token. 
         // We just return a success message here.
@@ -48,6 +77,24 @@ class AuthController {
         response(200, true, null, 'Logged out successfully');
     }
 
+    #[OA\Post(
+        path: "/auth/forgot-password",
+        summary: "Dispatch Password Reset Link",
+        tags: ["Authentication"],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["email"],
+                properties: [
+                    new OA\Property(property: "email", type: "string", format: "email", example: "manager@pharma.com")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 200, description: "Email successfully configured for recovery format"),
+            new OA\Response(response: 404, description: "Email does not natively exist inside the system")
+        ]
+    )]
     public function forgotPassword($input) {
         $email = $input['email'] ?? '';
         if (!$email) response(400, false, null, 'Email address is required');
@@ -70,6 +117,25 @@ class AuthController {
         response(200, true, null, 'A recovery link has been dispatched to your email address.');
     }
 
+    #[OA\Post(
+        path: "/auth/reset-password",
+        summary: "Finalize Password Overwrite",
+        tags: ["Authentication"],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["token", "password"],
+                properties: [
+                    new OA\Property(property: "token", type: "string", example: "e10fb7..."),
+                    new OA\Property(property: "password", type: "string", format: "password", example: "manager123")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 200, description: "Password safely bound & token entirely evaporated"),
+            new OA\Response(response: 400, description: "Temporal Hash invalidly timed out or corrupted")
+        ]
+    )]
     public function resetPassword($input) {
         $token = $input['token'] ?? '';
         $password = $input['password'] ?? '';

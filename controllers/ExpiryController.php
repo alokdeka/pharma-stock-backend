@@ -1,4 +1,5 @@
 <?php
+use OpenApi\Attributes as OA;
 
 class ExpiryController {
     private $pdo;
@@ -7,6 +8,13 @@ class ExpiryController {
         $this->pdo = $pdo;
     }
 
+    #[OA\Get(
+        path: "/expiry/dashboard",
+        summary: "Get Expiry Dashboard",
+        tags: ["Expiry Management"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Retrieves items mapping to color-coded expiry urgencies")]
+    )]
     public function dashboard() {
         authenticate(); // Any
 
@@ -31,6 +39,13 @@ class ExpiryController {
         response(200, true, $data, 'Expiry dashboard retrieved');
     }
 
+    #[OA\Get(
+        path: "/expiry/critical",
+        summary: "Get Critical Expiry Batches",
+        tags: ["Expiry Management"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Retrieves only items severely close to expiration constraints")]
+    )]
     public function critical() {
         authenticate(); // Any
 

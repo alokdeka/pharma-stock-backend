@@ -1,4 +1,5 @@
 <?php
+use OpenApi\Attributes as OA;
 
 class BatchController {
     private $pdo;
@@ -7,12 +8,27 @@ class BatchController {
         $this->pdo = $pdo;
     }
 
+    #[OA\Get(
+        path: "/batches",
+        summary: "List all active batches",
+        tags: ["Batches"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Returns dynamic list of batches globally")]
+    )]
     public function index() {
         authenticate(); // Any
         $stmt = $this->pdo->query("SELECT * FROM batches ORDER BY created_at DESC");
         response(200, true, $stmt->fetchAll(), 'Batches retrieved');
     }
 
+    #[OA\Get(
+        path: "/batches/{id}",
+        summary: "Trace Batch Details & History",
+        tags: ["Batches"],
+        security: [["bearerAuth" => []]],
+        parameters: [new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))],
+        responses: [new OA\Response(response: 200, description: "Returns individual batch specs and aggregated historical transactions")]
+    )]
     public function show($id) {
         authenticate(); // Any
         $stmt = $this->pdo->prepare("SELECT * FROM batches WHERE id = ?");
@@ -27,6 +43,14 @@ class BatchController {
         response(200, true, $batch, 'Batch retrieved');
     }
 
+    #[OA\Get(
+        path: "/batches/search",
+        summary: "Query Exact Batch Numbers",
+        tags: ["Batches"],
+        security: [["bearerAuth" => []]],
+        parameters: [new OA\Parameter(name: "batch_number", in: "query", required: true, schema: new OA\Schema(type: "string"))],
+        responses: [new OA\Response(response: 200, description: "Found items matching lookup parameters")]
+    )]
     public function search($batch_number) {
         authenticate(); // Any
         $stmt = $this->pdo->prepare("SELECT * FROM batches WHERE batch_number = ?");
@@ -34,6 +58,22 @@ class BatchController {
         response(200, true, $stmt->fetchAll(), 'Batches found by number');
     }
 
+    #[OA\Post(
+        path: "/batches",
+        summary: "Store new inbound Batch",
+        tags: ["Batches"],
+        security: [["bearerAuth" => []]],
+        requestBody: new OA\RequestBody(required: true, content: new OA\JsonContent(properties: [
+            new OA\Property(property: "medicine_id", type: "integer"),
+            new OA\Property(property: "batch_number", type: "string"),
+            new OA\Property(property: "mfg_date", type: "string", format: "date"),
+            new OA\Property(property: "expiry_date", type: "string", format: "date"),
+            new OA\Property(property: "quantity", type: "integer"),
+            new OA\Property(property: "location", type: "string"),
+            new OA\Property(property: "unit_cost", type: "number")
+        ])),
+        responses: [new OA\Response(response: 201, description: "Inbound inventory actively added properly")]
+    )]
     public function store($input) {
         $user = authenticate(['manager']);
         
@@ -69,6 +109,18 @@ class BatchController {
         }
     }
 
+    #[OA\Post(
+        path: "/batches/{id}/sell",
+        summary: "Record FEFO Medicine Consumption",
+        tags: ["Batches"],
+        security: [["bearerAuth" => []]],
+        parameters: [new OA\Parameter(name: "id", in: "path", required: true, description: "MEDICINE ID target", schema: new OA\Schema(type: "integer"))],
+        requestBody: new OA\RequestBody(required: true, content: new OA\JsonContent(properties: [
+            new OA\Property(property: "quantity", type: "integer"),
+            new OA\Property(property: "reference", type: "string")
+        ])),
+        responses: [new OA\Response(response: 200, description: "Chronologically withdrew batch payload safely")]
+    )]
     public function sell($medicine_id, $input) {
         // According to the guide, FEFO means "When a sale is recorded against a medicine (not a specific batch), the API must auto-select the batch expiring soonest."
         // Wait, the API endpoint is `POST /api/batches/{id}/sell` which implies an ID of a medicine because the payload has `{ "quantity": 50, "reference": "INV-1023" }` and the guide says "When a sale is recorded against a medicine (not a specific batch)". Wait, the route says `/api/batches/{id}/sell`, so is `{id}` the medicine ID or batch ID?
@@ -147,6 +199,18 @@ class BatchController {
         }
     }
 
+    #[OA\Post(
+        path: "/batches/{id}/spoil",
+        summary: "Quarantine Spoilage Defectives",
+        tags: ["Batches"],
+        security: [["bearerAuth" => []]],
+        parameters: [new OA\Parameter(name: "id", in: "path", required: true, description: "BATCH ID target", schema: new OA\Schema(type: "integer"))],
+        requestBody: new OA\RequestBody(required: true, content: new OA\JsonContent(properties: [
+            new OA\Property(property: "quantity", type: "integer"),
+            new OA\Property(property: "reason", type: "string", example: "Spillage/Expired")
+        ])),
+        responses: [new OA\Response(response: 200, description: "Quantity physically extracted into a loss vector endpoint")]
+    )]
     public function spoil($id, $input) {
         $user = authenticate(['admin', 'manager']);
         $quantity = $input['quantity'] ?? 0;

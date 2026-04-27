@@ -1,4 +1,5 @@
 <?php
+use OpenApi\Attributes as OA;
 
 class OrderController {
     private $pdo;
@@ -7,6 +8,13 @@ class OrderController {
         $this->pdo = $pdo;
     }
 
+    #[OA\Get(
+        path: "/stock/low",
+        summary: "Get Medicines Below Reorder Point",
+        tags: ["Orders & Stock"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "List of items actively experiencing low-stock shortages")]
+    )]
     public function lowStock() {
         authenticate(); // Any
 
@@ -27,12 +35,31 @@ class OrderController {
         response(200, true, $data, 'Low stock medicines retrieved');
     }
 
+    #[OA\Get(
+        path: "/orders",
+        summary: "Get Purchase Orders",
+        tags: ["Orders & Stock"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Extracts all chronological PO records natively")]
+    )]
     public function index() {
         authenticate(['admin', 'manager']);
         $stmt = $this->pdo->query("SELECT * FROM purchase_orders ORDER BY created_at DESC");
         response(200, true, $stmt->fetchAll(), 'Purchase orders retrieved');
     }
 
+    #[OA\Post(
+        path: "/orders",
+        summary: "Generate Purchase Order",
+        tags: ["Orders & Stock"],
+        security: [["bearerAuth" => []]],
+        requestBody: new OA\RequestBody(required: true, content: new OA\JsonContent(properties: [
+            new OA\Property(property: "medicine_id", type: "integer"),
+            new OA\Property(property: "quantity", type: "integer"),
+            new OA\Property(property: "supplier_id", type: "integer")
+        ])),
+        responses: [new OA\Response(response: 201, description: "Successfully established remote purchase intent algorithm")]
+    )]
     public function store($input) {
         $user = authenticate(['manager']);
         
@@ -50,6 +77,17 @@ class OrderController {
         response(201, true, ['id' => $this->pdo->lastInsertId()], 'Purchase order generated');
     }
 
+    #[OA\Put(
+        path: "/orders/{id}/status",
+        summary: "Update Generic Order Status",
+        tags: ["Orders & Stock"],
+        security: [["bearerAuth" => []]],
+        parameters: [new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))],
+        requestBody: new OA\RequestBody(required: true, content: new OA\JsonContent(properties: [
+            new OA\Property(property: "status", type: "string", example: "approved")
+        ])),
+        responses: [new OA\Response(response: 200, description: "Successfully integrated workflow adjustment parameters")]
+    )]
     public function updateStatus($id, $input) {
         authenticate(['admin']);
         
