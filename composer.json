@@ -1,0 +1,9 @@
+{
+    "name": "alokdeka/pharma-stock",
+    "description": "Pharma-Stock WMS PHP API",
+    "type": "project",
+    "require": {
+        "firebase/php-jwt": "^6.8",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
