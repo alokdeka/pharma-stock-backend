@@ -3,3 +3,4 @@
 .DS_Store
 debug.json
 debug-errors.log
+*.log
