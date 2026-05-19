@@ -1,0 +1,589 @@
+[Wed May 20 01:18:18 2026] PHP 8.4.10 Development Server (http://localhost:8000) started
+[Wed May 20 01:18:20 2026] [::1]:59758 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59759 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59758 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:20 2026] [::1]:59758 Closing
+[Wed May 20 01:18:20 2026] [::1]:59760 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59759 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:18:20 2026] [::1]:59759 Closing
+[Wed May 20 01:18:20 2026] [::1]:59761 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59760 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:20 2026] [::1]:59760 Closing
+[Wed May 20 01:18:20 2026] [::1]:59763 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59761 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:18:20 2026] [::1]:59761 Closing
+[Wed May 20 01:18:20 2026] [::1]:59764 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59763 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:20 2026] [::1]:59763 Closing
+[Wed May 20 01:18:20 2026] [::1]:59764 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:20 2026] [::1]:59764 Closing
+[Wed May 20 01:18:20 2026] [::1]:59766 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59768 Accepted
+[Wed May 20 01:18:20 2026] [::1]:59766 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:20 2026] [::1]:59766 Closing
+[Wed May 20 01:18:20 2026] [::1]:59768 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:20 2026] [::1]:59768 Closing
+[Wed May 20 01:18:22 2026] [::1]:59782 Accepted
+[Wed May 20 01:18:22 2026] [::1]:59783 Accepted
+[Wed May 20 01:18:22 2026] [::1]:59782 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:22 2026] [::1]:59782 Closing
+[Wed May 20 01:18:22 2026] [::1]:59783 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:22 2026] [::1]:59783 Closing
+[Wed May 20 01:18:22 2026] [::1]:59785 Accepted
+[Wed May 20 01:18:22 2026] [::1]:59785 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:22 2026] [::1]:59785 Closing
+[Wed May 20 01:18:22 2026] [::1]:59787 Accepted
+[Wed May 20 01:18:22 2026] [::1]:59787 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:22 2026] [::1]:59787 Closing
+[Wed May 20 01:18:24 2026] [::1]:59790 Accepted
+[Wed May 20 01:18:24 2026] [::1]:59790 [200]: OPTIONS /api/reports/transactions?from=2026-05-12&to=2026-05-19
+[Wed May 20 01:18:24 2026] [::1]:59790 Closing
+[Wed May 20 01:18:24 2026] [::1]:59791 Accepted
+[Wed May 20 01:18:24 2026] [::1]:59791 [200]: GET /api/reports/transactions?from=2026-05-12&to=2026-05-19
+[Wed May 20 01:18:24 2026] [::1]:59791 Closing
+[Wed May 20 01:18:26 2026] [::1]:59796 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59797 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59798 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59796 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59796 Closing
+[Wed May 20 01:18:26 2026] [::1]:59799 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59797 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59797 Closing
+[Wed May 20 01:18:26 2026] [::1]:59798 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59798 Closing
+[Wed May 20 01:18:26 2026] [::1]:59800 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59799 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59799 Closing
+[Wed May 20 01:18:26 2026] [::1]:59801 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59800 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59800 Closing
+[Wed May 20 01:18:26 2026] [::1]:59802 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59801 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59801 Closing
+[Wed May 20 01:18:26 2026] [::1]:59803 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59802 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59802 Closing
+[Wed May 20 01:18:26 2026] [::1]:59803 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59803 Closing
+[Wed May 20 01:18:26 2026] [::1]:59810 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59811 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59810 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59810 Closing
+[Wed May 20 01:18:26 2026] [::1]:59812 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59811 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59811 Closing
+[Wed May 20 01:18:26 2026] [::1]:59813 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59812 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59812 Closing
+[Wed May 20 01:18:26 2026] [::1]:59814 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59813 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59813 Closing
+[Wed May 20 01:18:26 2026] [::1]:59815 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59814 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59814 Closing
+[Wed May 20 01:18:26 2026] [::1]:59816 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59815 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59815 Closing
+[Wed May 20 01:18:26 2026] [::1]:59817 Accepted
+[Wed May 20 01:18:26 2026] [::1]:59816 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:26 2026] [::1]:59816 Closing
+[Wed May 20 01:18:26 2026] [::1]:59817 [200]: GET /api/reports/inventory
+[Wed May 20 01:18:26 2026] [::1]:59817 Closing
+[Wed May 20 01:18:28 2026] [::1]:59822 Accepted
+[Wed May 20 01:18:28 2026] [::1]:59822 [200]: GET /api/reports/transactions?from=2026-05-12&to=2026-05-19
+[Wed May 20 01:18:28 2026] [::1]:59822 Closing
+[Wed May 20 01:18:56 2026] [::1]:59835 Accepted
+[Wed May 20 01:18:56 2026] [::1]:59835 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:18:56 2026] [::1]:59835 Closing
+[Wed May 20 01:18:56 2026] [::1]:59836 Accepted
+[Wed May 20 01:18:56 2026] [::1]:59836 [200]: GET /api/notifications/smart
+[Wed May 20 01:18:56 2026] [::1]:59836 Closing
+[Wed May 20 01:19:26 2026] [::1]:59851 Accepted
+[Wed May 20 01:19:26 2026] [::1]:59851 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:19:26 2026] [::1]:59851 Closing
+[Wed May 20 01:19:26 2026] [::1]:59852 Accepted
+[Wed May 20 01:19:26 2026] [::1]:59852 [200]: GET /api/notifications/smart
+[Wed May 20 01:19:26 2026] [::1]:59852 Closing
+[Wed May 20 01:19:41 2026] [::1]:59865 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59866 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59865 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:19:41 2026] [::1]:59865 Closing
+[Wed May 20 01:19:41 2026] [::1]:59867 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59866 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:19:41 2026] [::1]:59866 Closing
+[Wed May 20 01:19:41 2026] [::1]:59868 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59867 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:19:41 2026] [::1]:59867 Closing
+[Wed May 20 01:19:41 2026] [::1]:59869 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59868 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:19:41 2026] [::1]:59868 Closing
+[Wed May 20 01:19:41 2026] [::1]:59870 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59869 [200]: GET /api/notifications/smart
+[Wed May 20 01:19:41 2026] [::1]:59869 Closing
+[Wed May 20 01:19:41 2026] [::1]:59870 [200]: GET /api/reports/inventory
+[Wed May 20 01:19:41 2026] [::1]:59870 Closing
+[Wed May 20 01:19:41 2026] [::1]:59872 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59872 [200]: GET /api/notifications/smart
+[Wed May 20 01:19:41 2026] [::1]:59872 Closing
+[Wed May 20 01:19:41 2026] [::1]:59874 Accepted
+[Wed May 20 01:19:41 2026] [::1]:59874 [200]: GET /api/reports/inventory
+[Wed May 20 01:19:41 2026] [::1]:59874 Closing
+[Wed May 20 01:19:43 2026] [::1]:59881 Accepted
+[Wed May 20 01:19:43 2026] [::1]:59881 [200]: OPTIONS /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:19:43 2026] [::1]:59881 Closing
+[Wed May 20 01:19:43 2026] [::1]:59882 Accepted
+[Wed May 20 01:19:43 2026] [::1]:59882 [200]: GET /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:19:43 2026] [::1]:59882 Closing
+[Wed May 20 01:19:58 2026] [::1]:59889 Accepted
+[Wed May 20 01:19:58 2026] [::1]:59889 [200]: OPTIONS /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:19:58 2026] [::1]:59889 Closing
+[Wed May 20 01:19:58 2026] [::1]:59890 Accepted
+[Wed May 20 01:19:58 2026] [::1]:59890 [200]: GET /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:19:58 2026] [::1]:59890 Closing
+[Wed May 20 01:20:11 2026] [::1]:59895 Accepted
+[Wed May 20 01:20:11 2026] [::1]:59895 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:20:11 2026] [::1]:59895 Closing
+[Wed May 20 01:20:11 2026] [::1]:59896 Accepted
+[Wed May 20 01:20:11 2026] [::1]:59896 [200]: GET /api/notifications/smart
+[Wed May 20 01:20:11 2026] [::1]:59896 Closing
+[Wed May 20 01:20:41 2026] [::1]:59902 Accepted
+[Wed May 20 01:20:41 2026] [::1]:59902 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:20:41 2026] [::1]:59902 Closing
+[Wed May 20 01:20:41 2026] [::1]:59903 Accepted
+[Wed May 20 01:20:41 2026] [::1]:59903 [200]: GET /api/notifications/smart
+[Wed May 20 01:20:41 2026] [::1]:59903 Closing
+[Wed May 20 01:21:11 2026] [::1]:59915 Accepted
+[Wed May 20 01:21:11 2026] [::1]:59915 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:21:11 2026] [::1]:59915 Closing
+[Wed May 20 01:21:11 2026] [::1]:59916 Accepted
+[Wed May 20 01:21:11 2026] [::1]:59916 [200]: GET /api/notifications/smart
+[Wed May 20 01:21:11 2026] [::1]:59916 Closing
+[Wed May 20 01:21:37 2026] [::1]:59922 Accepted
+[Wed May 20 01:21:37 2026] [::1]:59922 [200]: OPTIONS /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:37 2026] [::1]:59922 Closing
+[Wed May 20 01:21:37 2026] [::1]:59923 Accepted
+[Wed May 20 01:21:37 2026] [::1]:59923 [200]: GET /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:37 2026] [::1]:59923 Closing
+[Wed May 20 01:21:38 2026] [::1]:59925 Accepted
+[Wed May 20 01:21:38 2026] [::1]:59925 [200]: OPTIONS /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:38 2026] [::1]:59925 Closing
+[Wed May 20 01:21:38 2026] [::1]:59926 Accepted
+[Wed May 20 01:21:38 2026] [::1]:59926 [200]: GET /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:38 2026] [::1]:59926 Closing
+[Wed May 20 01:21:41 2026] [::1]:59929 Accepted
+[Wed May 20 01:21:41 2026] [::1]:59929 [200]: GET /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:41 2026] [::1]:59929 Closing
+[Wed May 20 01:21:41 2026] [::1]:59931 Accepted
+[Wed May 20 01:21:41 2026] [::1]:59931 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:21:41 2026] [::1]:59931 Closing
+[Wed May 20 01:21:41 2026] [::1]:59932 Accepted
+[Wed May 20 01:21:41 2026] [::1]:59932 [200]: GET /api/notifications/smart
+[Wed May 20 01:21:41 2026] [::1]:59932 Closing
+[Wed May 20 01:21:42 2026] [::1]:59935 Accepted
+[Wed May 20 01:21:42 2026] [::1]:59935 [200]: GET /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:42 2026] [::1]:59935 Closing
+[Wed May 20 01:21:46 2026] [::1]:59938 Accepted
+[Wed May 20 01:21:46 2026] [::1]:59938 [200]: OPTIONS /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:46 2026] [::1]:59938 Closing
+[Wed May 20 01:21:46 2026] [::1]:59939 Accepted
+[Wed May 20 01:21:46 2026] [::1]:59939 [200]: GET /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:46 2026] [::1]:59939 Closing
+[Wed May 20 01:21:53 2026] [::1]:59943 Accepted
+[Wed May 20 01:21:53 2026] [::1]:59943 [200]: OPTIONS /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:53 2026] [::1]:59943 Closing
+[Wed May 20 01:21:53 2026] [::1]:59944 Accepted
+[Wed May 20 01:21:53 2026] [::1]:59944 [200]: GET /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:53 2026] [::1]:59944 Closing
+[Wed May 20 01:21:57 2026] [::1]:59948 Accepted
+[Wed May 20 01:21:57 2026] [::1]:59948 [200]: OPTIONS /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:57 2026] [::1]:59948 Closing
+[Wed May 20 01:21:57 2026] [::1]:59949 Accepted
+[Wed May 20 01:21:57 2026] [::1]:59949 [200]: GET /api/reports/transactions?from=2026-05-13&to=2026-05-20
+[Wed May 20 01:21:57 2026] [::1]:59949 Closing
+[Wed May 20 01:21:59 2026] [::1]:59951 Accepted
+[Wed May 20 01:21:59 2026] [::1]:59951 [200]: OPTIONS /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:59 2026] [::1]:59951 Closing
+[Wed May 20 01:21:59 2026] [::1]:59952 Accepted
+[Wed May 20 01:21:59 2026] [::1]:59952 [200]: GET /api/reports/batch-sales?batch_number=
+[Wed May 20 01:21:59 2026] [::1]:59952 Closing
+[Wed May 20 01:22:11 2026] [::1]:59960 Accepted
+[Wed May 20 01:22:11 2026] [::1]:59960 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:22:11 2026] [::1]:59960 Closing
+[Wed May 20 01:22:11 2026] [::1]:59961 Accepted
+[Wed May 20 01:22:11 2026] [::1]:59961 [200]: GET /api/notifications/smart
+[Wed May 20 01:22:11 2026] [::1]:59961 Closing
+[Wed May 20 01:22:41 2026] [::1]:59964 Accepted
+[Wed May 20 01:22:41 2026] [::1]:59964 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:22:41 2026] [::1]:59964 Closing
+[Wed May 20 01:22:41 2026] [::1]:59965 Accepted
+[Wed May 20 01:22:41 2026] [::1]:59965 [200]: GET /api/notifications/smart
+[Wed May 20 01:22:41 2026] [::1]:59965 Closing
+[Wed May 20 01:23:11 2026] [::1]:59973 Accepted
+[Wed May 20 01:23:11 2026] [::1]:59973 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:23:11 2026] [::1]:59973 Closing
+[Wed May 20 01:23:11 2026] [::1]:59974 Accepted
+[Wed May 20 01:23:11 2026] [::1]:59974 [200]: GET /api/notifications/smart
+[Wed May 20 01:23:11 2026] [::1]:59974 Closing
+[Wed May 20 01:23:41 2026] [::1]:59978 Accepted
+[Wed May 20 01:23:41 2026] [::1]:59978 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:23:41 2026] [::1]:59978 Closing
+[Wed May 20 01:23:41 2026] [::1]:59979 Accepted
+[Wed May 20 01:23:41 2026] [::1]:59979 [200]: GET /api/notifications/smart
+[Wed May 20 01:23:41 2026] [::1]:59979 Closing
+[Wed May 20 01:24:11 2026] [::1]:59989 Accepted
+[Wed May 20 01:24:11 2026] [::1]:59989 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:24:11 2026] [::1]:59989 Closing
+[Wed May 20 01:24:11 2026] [::1]:59990 Accepted
+[Wed May 20 01:24:11 2026] [::1]:59990 [200]: GET /api/notifications/smart
+[Wed May 20 01:24:11 2026] [::1]:59990 Closing
+[Wed May 20 01:24:41 2026] [::1]:60000 Accepted
+[Wed May 20 01:24:41 2026] [::1]:60000 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:24:41 2026] [::1]:60000 Closing
+[Wed May 20 01:24:41 2026] [::1]:60001 Accepted
+[Wed May 20 01:24:41 2026] [::1]:60001 [200]: GET /api/notifications/smart
+[Wed May 20 01:24:41 2026] [::1]:60001 Closing
+[Wed May 20 01:25:11 2026] [::1]:60009 Accepted
+[Wed May 20 01:25:11 2026] [::1]:60009 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:25:11 2026] [::1]:60009 Closing
+[Wed May 20 01:25:11 2026] [::1]:60010 Accepted
+[Wed May 20 01:25:11 2026] [::1]:60010 [200]: GET /api/notifications/smart
+[Wed May 20 01:25:11 2026] [::1]:60010 Closing
+[Wed May 20 01:25:41 2026] [::1]:60016 Accepted
+[Wed May 20 01:25:41 2026] [::1]:60016 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:25:41 2026] [::1]:60016 Closing
+[Wed May 20 01:25:41 2026] [::1]:60017 Accepted
+[Wed May 20 01:25:41 2026] [::1]:60017 [200]: GET /api/notifications/smart
+[Wed May 20 01:25:41 2026] [::1]:60017 Closing
+[Wed May 20 01:26:11 2026] [::1]:60033 Accepted
+[Wed May 20 01:26:11 2026] [::1]:60033 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:26:11 2026] [::1]:60033 Closing
+[Wed May 20 01:26:11 2026] [::1]:60034 Accepted
+[Wed May 20 01:26:11 2026] [::1]:60034 [200]: GET /api/notifications/smart
+[Wed May 20 01:26:11 2026] [::1]:60034 Closing
+[Wed May 20 01:26:41 2026] [::1]:60038 Accepted
+[Wed May 20 01:26:41 2026] [::1]:60038 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:26:41 2026] [::1]:60038 Closing
+[Wed May 20 01:26:41 2026] [::1]:60039 Accepted
+[Wed May 20 01:26:41 2026] [::1]:60039 [200]: GET /api/notifications/smart
+[Wed May 20 01:26:41 2026] [::1]:60039 Closing
+[Wed May 20 01:27:01 2026] [::1]:60061 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60062 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60061 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:27:01 2026] [::1]:60061 Closing
+[Wed May 20 01:27:01 2026] [::1]:60063 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60062 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:27:01 2026] [::1]:60062 Closing
+[Wed May 20 01:27:01 2026] [::1]:60064 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60063 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:27:01 2026] [::1]:60063 Closing
+[Wed May 20 01:27:01 2026] [::1]:60065 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60064 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:27:01 2026] [::1]:60064 Closing
+[Wed May 20 01:27:01 2026] [::1]:60065 [200]: GET /api/notifications/smart
+[Wed May 20 01:27:01 2026] [::1]:60065 Closing
+[Wed May 20 01:27:01 2026] [::1]:60066 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60066 [200]: GET /api/reports/inventory
+[Wed May 20 01:27:01 2026] [::1]:60066 Closing
+[Wed May 20 01:27:01 2026] [::1]:60068 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60068 [200]: GET /api/notifications/smart
+[Wed May 20 01:27:01 2026] [::1]:60068 Closing
+[Wed May 20 01:27:01 2026] [::1]:60070 Accepted
+[Wed May 20 01:27:01 2026] [::1]:60070 [200]: GET /api/reports/inventory
+[Wed May 20 01:27:01 2026] [::1]:60070 Closing
+[Wed May 20 01:27:12 2026] [::1]:60086 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60087 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60086 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:27:12 2026] [::1]:60086 Closing
+[Wed May 20 01:27:12 2026] [::1]:60088 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60087 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:27:12 2026] [::1]:60087 Closing
+[Wed May 20 01:27:12 2026] [::1]:60089 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60088 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:27:12 2026] [::1]:60088 Closing
+[Wed May 20 01:27:12 2026] [::1]:60090 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60089 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:27:12 2026] [::1]:60089 Closing
+[Wed May 20 01:27:12 2026] [::1]:60091 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60090 [200]: GET /api/notifications/smart
+[Wed May 20 01:27:12 2026] [::1]:60090 Closing
+[Wed May 20 01:27:12 2026] [::1]:60092 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60091 [200]: GET /api/reports/inventory
+[Wed May 20 01:27:12 2026] [::1]:60091 Closing
+[Wed May 20 01:27:12 2026] [::1]:60093 Accepted
+[Wed May 20 01:27:12 2026] [::1]:60092 [200]: GET /api/notifications/smart
+[Wed May 20 01:27:12 2026] [::1]:60092 Closing
+[Wed May 20 01:27:12 2026] [::1]:60093 [200]: GET /api/reports/inventory
+[Wed May 20 01:27:12 2026] [::1]:60093 Closing
+[Wed May 20 01:27:42 2026] [::1]:60102 Accepted
+[Wed May 20 01:27:42 2026] [::1]:60102 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:27:42 2026] [::1]:60102 Closing
+[Wed May 20 01:27:42 2026] [::1]:60103 Accepted
+[Wed May 20 01:27:42 2026] [::1]:60103 [200]: GET /api/notifications/smart
+[Wed May 20 01:27:42 2026] [::1]:60103 Closing
+[Wed May 20 01:28:12 2026] [::1]:60113 Accepted
+[Wed May 20 01:28:12 2026] [::1]:60113 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:28:12 2026] [::1]:60113 Closing
+[Wed May 20 01:28:12 2026] [::1]:60114 Accepted
+[Wed May 20 01:28:12 2026] [::1]:60114 [200]: GET /api/notifications/smart
+[Wed May 20 01:28:12 2026] [::1]:60114 Closing
+[Wed May 20 01:28:42 2026] [::1]:60117 Accepted
+[Wed May 20 01:28:42 2026] [::1]:60117 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:28:42 2026] [::1]:60117 Closing
+[Wed May 20 01:28:42 2026] [::1]:60118 Accepted
+[Wed May 20 01:28:42 2026] [::1]:60118 [200]: GET /api/notifications/smart
+[Wed May 20 01:28:42 2026] [::1]:60118 Closing
+[Wed May 20 01:29:12 2026] [::1]:60127 Accepted
+[Wed May 20 01:29:12 2026] [::1]:60127 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:29:12 2026] [::1]:60127 Closing
+[Wed May 20 01:29:12 2026] [::1]:60128 Accepted
+[Wed May 20 01:29:12 2026] [::1]:60128 [200]: GET /api/notifications/smart
+[Wed May 20 01:29:12 2026] [::1]:60128 Closing
+[Wed May 20 01:29:42 2026] [::1]:60139 Accepted
+[Wed May 20 01:29:42 2026] [::1]:60139 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:29:42 2026] [::1]:60139 Closing
+[Wed May 20 01:29:42 2026] [::1]:60140 Accepted
+[Wed May 20 01:29:42 2026] [::1]:60140 [200]: GET /api/notifications/smart
+[Wed May 20 01:29:42 2026] [::1]:60140 Closing
+[Wed May 20 01:30:12 2026] [::1]:60157 Accepted
+[Wed May 20 01:30:12 2026] [::1]:60157 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:30:12 2026] [::1]:60157 Closing
+[Wed May 20 01:30:12 2026] [::1]:60158 Accepted
+[Wed May 20 01:30:12 2026] [::1]:60158 [200]: GET /api/notifications/smart
+[Wed May 20 01:30:12 2026] [::1]:60158 Closing
+[Wed May 20 01:30:35 2026] [::1]:60179 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60180 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60179 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:30:35 2026] [::1]:60179 Closing
+[Wed May 20 01:30:35 2026] [::1]:60181 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60180 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:30:35 2026] [::1]:60180 Closing
+[Wed May 20 01:30:35 2026] [::1]:60182 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60181 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:30:35 2026] [::1]:60181 Closing
+[Wed May 20 01:30:35 2026] [::1]:60183 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60182 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:30:35 2026] [::1]:60182 Closing
+[Wed May 20 01:30:35 2026] [::1]:60184 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60183 [200]: GET /api/notifications/smart
+[Wed May 20 01:30:35 2026] [::1]:60183 Closing
+[Wed May 20 01:30:35 2026] [::1]:60184 [200]: GET /api/reports/inventory
+[Wed May 20 01:30:35 2026] [::1]:60184 Closing
+[Wed May 20 01:30:35 2026] [::1]:60186 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60186 [200]: GET /api/notifications/smart
+[Wed May 20 01:30:35 2026] [::1]:60186 Closing
+[Wed May 20 01:30:35 2026] [::1]:60188 Accepted
+[Wed May 20 01:30:35 2026] [::1]:60188 [200]: GET /api/reports/inventory
+[Wed May 20 01:30:35 2026] [::1]:60188 Closing
+[Wed May 20 01:30:49 2026] [::1]:60200 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60201 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60200 [200]: OPTIONS /api/batches
+[Wed May 20 01:30:49 2026] [::1]:60200 Closing
+[Wed May 20 01:30:49 2026] [::1]:60202 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60201 [200]: OPTIONS /api/medicines
+[Wed May 20 01:30:49 2026] [::1]:60201 Closing
+[Wed May 20 01:30:49 2026] [::1]:60203 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60202 [200]: OPTIONS /api/batches
+[Wed May 20 01:30:49 2026] [::1]:60202 Closing
+[Wed May 20 01:30:49 2026] [::1]:60203 [200]: OPTIONS /api/medicines
+[Wed May 20 01:30:49 2026] [::1]:60203 Closing
+[Wed May 20 01:30:49 2026] [::1]:60204 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60204 [200]: GET /api/batches
+[Wed May 20 01:30:49 2026] [::1]:60204 Closing
+[Wed May 20 01:30:49 2026] [::1]:60205 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60205 [200]: GET /api/medicines
+[Wed May 20 01:30:49 2026] [::1]:60205 Closing
+[Wed May 20 01:30:49 2026] [::1]:60207 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60207 [200]: GET /api/batches
+[Wed May 20 01:30:49 2026] [::1]:60207 Closing
+[Wed May 20 01:30:49 2026] [::1]:60209 Accepted
+[Wed May 20 01:30:49 2026] [::1]:60209 [200]: GET /api/medicines
+[Wed May 20 01:30:49 2026] [::1]:60209 Closing
+[Wed May 20 01:30:51 2026] [::1]:60213 Accepted
+[Wed May 20 01:30:51 2026] [::1]:60213 [200]: OPTIONS /api/batches/search?batch_number=Batch%20CRIT-2026-5969
+[Wed May 20 01:30:51 2026] [::1]:60213 Closing
+[Wed May 20 01:30:51 2026] [::1]:60214 Accepted
+[Wed May 20 01:30:51 2026] [::1]:60214 [200]: GET /api/batches/search?batch_number=Batch%20CRIT-2026-5969
+[Wed May 20 01:30:51 2026] [::1]:60214 Closing
+[Wed May 20 01:30:52 2026] [::1]:60216 Accepted
+[Wed May 20 01:30:52 2026] [::1]:60216 [200]: GET /api/batches/search?batch_number=Batch%20CRIT-2026-5969
+[Wed May 20 01:30:52 2026] [::1]:60216 Closing
+[Wed May 20 01:31:05 2026] [::1]:60222 Accepted
+[Wed May 20 01:31:05 2026] [::1]:60222 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:31:05 2026] [::1]:60222 Closing
+[Wed May 20 01:31:05 2026] [::1]:60223 Accepted
+[Wed May 20 01:31:05 2026] [::1]:60223 [200]: GET /api/notifications/smart
+[Wed May 20 01:31:05 2026] [::1]:60223 Closing
+[Wed May 20 01:31:35 2026] [::1]:60229 Accepted
+[Wed May 20 01:31:35 2026] [::1]:60229 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:31:35 2026] [::1]:60229 Closing
+[Wed May 20 01:31:35 2026] [::1]:60230 Accepted
+[Wed May 20 01:31:35 2026] [::1]:60230 [200]: GET /api/notifications/smart
+[Wed May 20 01:31:35 2026] [::1]:60230 Closing
+[Wed May 20 01:31:50 2026] [::1]:60248 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60249 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60248 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:31:50 2026] [::1]:60248 Closing
+[Wed May 20 01:31:50 2026] [::1]:60250 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60249 [200]: OPTIONS /api/batches
+[Wed May 20 01:31:50 2026] [::1]:60249 Closing
+[Wed May 20 01:31:50 2026] [::1]:60251 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60250 [200]: OPTIONS /api/medicines
+[Wed May 20 01:31:50 2026] [::1]:60250 Closing
+[Wed May 20 01:31:50 2026] [::1]:60252 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60251 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:31:50 2026] [::1]:60251 Closing
+[Wed May 20 01:31:50 2026] [::1]:60253 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60252 [200]: OPTIONS /api/batches
+[Wed May 20 01:31:50 2026] [::1]:60252 Closing
+[Wed May 20 01:31:50 2026] [::1]:60254 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60253 [200]: OPTIONS /api/medicines
+[Wed May 20 01:31:50 2026] [::1]:60253 Closing
+[Wed May 20 01:31:50 2026] [::1]:60255 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60254 [200]: GET /api/notifications/smart
+[Wed May 20 01:31:50 2026] [::1]:60254 Closing
+[Wed May 20 01:31:50 2026] [::1]:60256 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60255 [200]: GET /api/batches
+[Wed May 20 01:31:50 2026] [::1]:60255 Closing
+[Wed May 20 01:31:50 2026] [::1]:60258 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60256 [200]: GET /api/medicines
+[Wed May 20 01:31:50 2026] [::1]:60256 Closing
+[Wed May 20 01:31:50 2026] [::1]:60260 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60258 [200]: GET /api/notifications/smart
+[Wed May 20 01:31:50 2026] [::1]:60258 Closing
+[Wed May 20 01:31:50 2026] [::1]:60262 Accepted
+[Wed May 20 01:31:50 2026] [::1]:60260 [200]: GET /api/batches
+[Wed May 20 01:31:50 2026] [::1]:60260 Closing
+[Wed May 20 01:31:50 2026] [::1]:60262 [200]: GET /api/medicines
+[Wed May 20 01:31:50 2026] [::1]:60262 Closing
+[Wed May 20 01:32:15 2026] [::1]:60272 Accepted
+[Wed May 20 01:32:15 2026] [::1]:60272 [200]: OPTIONS /api/batches/search?batch_number=CRIT-2026-3909
+[Wed May 20 01:32:15 2026] [::1]:60272 Closing
+[Wed May 20 01:32:15 2026] [::1]:60273 Accepted
+[Wed May 20 01:32:15 2026] [::1]:60273 [200]: GET /api/batches/search?batch_number=CRIT-2026-3909
+[Wed May 20 01:32:15 2026] [::1]:60273 Closing
+[Wed May 20 01:32:20 2026] [::1]:60275 Accepted
+[Wed May 20 01:32:20 2026] [::1]:60275 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:32:20 2026] [::1]:60275 Closing
+[Wed May 20 01:32:20 2026] [::1]:60276 Accepted
+[Wed May 20 01:32:20 2026] [::1]:60276 [200]: GET /api/notifications/smart
+[Wed May 20 01:32:20 2026] [::1]:60276 Closing
+[Wed May 20 01:32:37 2026] [::1]:60278 Accepted
+[Wed May 20 01:32:37 2026] [::1]:60279 Accepted
+[Wed May 20 01:32:37 2026] [::1]:60278 [200]: OPTIONS /api/batches
+[Wed May 20 01:32:37 2026] [::1]:60278 Closing
+[Wed May 20 01:32:38 2026] [::1]:60279 [200]: OPTIONS /api/medicines
+[Wed May 20 01:32:38 2026] [::1]:60279 Closing
+[Wed May 20 01:32:38 2026] [::1]:60280 Accepted
+[Wed May 20 01:32:38 2026] [::1]:60280 [200]: GET /api/batches
+[Wed May 20 01:32:38 2026] [::1]:60280 Closing
+[Wed May 20 01:32:38 2026] [::1]:60281 Accepted
+[Wed May 20 01:32:38 2026] [::1]:60281 [200]: GET /api/medicines
+[Wed May 20 01:32:38 2026] [::1]:60281 Closing
+[Wed May 20 01:32:47 2026] [::1]:60286 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60286 [200]: OPTIONS /api/medicines
+[Wed May 20 01:32:47 2026] [::1]:60286 Closing
+[Wed May 20 01:32:47 2026] [::1]:60287 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60288 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60287 [200]: OPTIONS /api/batches
+[Wed May 20 01:32:47 2026] [::1]:60287 Closing
+[Wed May 20 01:32:47 2026] [::1]:60289 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60288 [200]: OPTIONS /api/expiry/critical
+[Wed May 20 01:32:47 2026] [::1]:60288 Closing
+[Wed May 20 01:32:47 2026] [::1]:60290 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60289 [200]: OPTIONS /api/stock/low
+[Wed May 20 01:32:47 2026] [::1]:60289 Closing
+[Wed May 20 01:32:47 2026] [::1]:60291 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60290 [200]: OPTIONS /api/reports/expiry-summary
+[Wed May 20 01:32:47 2026] [::1]:60290 Closing
+[Wed May 20 01:32:47 2026] [::1]:60292 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60291 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:32:47 2026] [::1]:60291 Closing
+[Wed May 20 01:32:47 2026] [::1]:60293 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60292 [200]: OPTIONS /api/reports/sales-trend
+[Wed May 20 01:32:47 2026] [::1]:60292 Closing
+[Wed May 20 01:32:47 2026] [::1]:60294 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60293 [200]: OPTIONS /api/medicines
+[Wed May 20 01:32:47 2026] [::1]:60293 Closing
+[Wed May 20 01:32:47 2026] [::1]:60295 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60294 [200]: OPTIONS /api/batches
+[Wed May 20 01:32:47 2026] [::1]:60294 Closing
+[Wed May 20 01:32:47 2026] [::1]:60296 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60295 [200]: OPTIONS /api/expiry/critical
+[Wed May 20 01:32:47 2026] [::1]:60295 Closing
+[Wed May 20 01:32:47 2026] [::1]:60297 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60296 [200]: OPTIONS /api/stock/low
+[Wed May 20 01:32:47 2026] [::1]:60296 Closing
+[Wed May 20 01:32:47 2026] [::1]:60298 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60297 [200]: OPTIONS /api/reports/expiry-summary
+[Wed May 20 01:32:47 2026] [::1]:60297 Closing
+[Wed May 20 01:32:47 2026] [::1]:60299 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60298 [200]: OPTIONS /api/reports/inventory
+[Wed May 20 01:32:47 2026] [::1]:60298 Closing
+[Wed May 20 01:32:47 2026] [::1]:60300 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60299 [200]: OPTIONS /api/reports/sales-trend
+[Wed May 20 01:32:47 2026] [::1]:60299 Closing
+[Wed May 20 01:32:47 2026] [::1]:60301 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60300 [200]: GET /api/medicines
+[Wed May 20 01:32:47 2026] [::1]:60300 Closing
+[Wed May 20 01:32:47 2026] [::1]:60302 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60301 [200]: GET /api/batches
+[Wed May 20 01:32:47 2026] [::1]:60301 Closing
+[Wed May 20 01:32:47 2026] [::1]:60303 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60302 [200]: GET /api/expiry/critical
+[Wed May 20 01:32:47 2026] [::1]:60302 Closing
+[Wed May 20 01:32:47 2026] [::1]:60304 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60303 [200]: GET /api/reports/expiry-summary
+[Wed May 20 01:32:47 2026] [::1]:60303 Closing
+[Wed May 20 01:32:47 2026] [::1]:60305 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60304 [200]: GET /api/reports/inventory
+[Wed May 20 01:32:47 2026] [::1]:60304 Closing
+[Wed May 20 01:32:47 2026] [::1]:60307 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60305 [200]: GET /api/stock/low
+[Wed May 20 01:32:47 2026] [::1]:60305 Closing
+[Wed May 20 01:32:47 2026] [::1]:60309 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60307 [200]: GET /api/reports/sales-trend
+[Wed May 20 01:32:47 2026] [::1]:60307 Closing
+[Wed May 20 01:32:47 2026] [::1]:60311 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60309 [200]: GET /api/medicines
+[Wed May 20 01:32:47 2026] [::1]:60309 Closing
+[Wed May 20 01:32:47 2026] [::1]:60313 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60311 [200]: GET /api/batches
+[Wed May 20 01:32:47 2026] [::1]:60311 Closing
+[Wed May 20 01:32:47 2026] [::1]:60315 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60313 [200]: GET /api/expiry/critical
+[Wed May 20 01:32:47 2026] [::1]:60313 Closing
+[Wed May 20 01:32:47 2026] [::1]:60317 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60315 [200]: GET /api/reports/expiry-summary
+[Wed May 20 01:32:47 2026] [::1]:60315 Closing
+[Wed May 20 01:32:47 2026] [::1]:60319 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60317 [200]: GET /api/reports/inventory
+[Wed May 20 01:32:47 2026] [::1]:60317 Closing
+[Wed May 20 01:32:47 2026] [::1]:60321 Accepted
+[Wed May 20 01:32:47 2026] [::1]:60319 [200]: GET /api/stock/low
+[Wed May 20 01:32:47 2026] [::1]:60319 Closing
+[Wed May 20 01:32:47 2026] [::1]:60321 [200]: GET /api/reports/sales-trend
+[Wed May 20 01:32:47 2026] [::1]:60321 Closing
+[Wed May 20 01:32:50 2026] [::1]:60329 Accepted
+[Wed May 20 01:32:50 2026] [::1]:60329 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:32:50 2026] [::1]:60329 Closing
+[Wed May 20 01:32:50 2026] [::1]:60330 Accepted
+[Wed May 20 01:32:50 2026] [::1]:60330 [200]: GET /api/notifications/smart
+[Wed May 20 01:32:50 2026] [::1]:60330 Closing
+[Wed May 20 01:33:20 2026] [::1]:60336 Accepted
+[Wed May 20 01:33:20 2026] [::1]:60336 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:33:20 2026] [::1]:60336 Closing
+[Wed May 20 01:33:20 2026] [::1]:60337 Accepted
+[Wed May 20 01:33:20 2026] [::1]:60337 [200]: GET /api/notifications/smart
+[Wed May 20 01:33:20 2026] [::1]:60337 Closing
+[Wed May 20 01:33:50 2026] [::1]:60343 Accepted
+[Wed May 20 01:33:50 2026] [::1]:60343 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:33:50 2026] [::1]:60343 Closing
+[Wed May 20 01:33:50 2026] [::1]:60344 Accepted
+[Wed May 20 01:33:50 2026] [::1]:60344 [200]: GET /api/notifications/smart
+[Wed May 20 01:33:50 2026] [::1]:60344 Closing
+[Wed May 20 01:34:20 2026] [::1]:60352 Accepted
+[Wed May 20 01:34:20 2026] [::1]:60352 [200]: OPTIONS /api/notifications/smart
+[Wed May 20 01:34:20 2026] [::1]:60352 Closing
+[Wed May 20 01:34:20 2026] [::1]:60353 Accepted
+[Wed May 20 01:34:20 2026] [::1]:60353 [200]: GET /api/notifications/smart
+[Wed May 20 01:34:20 2026] [::1]:60353 Closing

@@ -156,6 +156,14 @@ switch ($resource) {
 
     case 'notifications':
         require_once __DIR__ . '/../controllers/NotificationController.php';
+        $controller = new NotificationController($pdo);
+        if ($method === 'GET' && $id === 'smart') {
+            $controller->smart();
+        } elseif ($method === 'POST' && $id && $action === 'read') {
+            $controller->markRead($id);
+        } else {
+            response(404, false, null, 'Endpoint not found');
+        }
         break;
 
     case 'docs':
@@ -168,7 +176,7 @@ switch ($resource) {
                 $controllersToLoad = [
                     'OpenApiSpec.php', 'AuthController.php', 'MedicineController.php',
                     'BatchController.php', 'ExpiryController.php', 'OrderController.php',
-                    'ReportController.php', 'DatabaseController.php'
+                    'ReportController.php', 'DatabaseController.php', 'NotificationController.php'
                 ];
                 foreach ($controllersToLoad as $cF) {
                     if (file_exists(__DIR__ . '/../controllers/' . $cF)) {

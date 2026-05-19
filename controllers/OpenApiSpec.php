@@ -45,7 +45,4 @@ class ProceduralProxyEndpoints {
 
     #[OA\Get(path: "/settings", summary: "Fetch Global Parameters", tags: ["Core Engine Settings"], security: [["bearerAuth" => []]], responses: [new OA\Response(response: 200, description: "System Vars")])]
     public function settingsGet() {}
-
-    #[OA\Get(path: "/notifications", summary: "Pull Active User Alerts", tags: ["Core Engine Settings"], security: [["bearerAuth" => []]], responses: [new OA\Response(response: 200, description: "Found Alerts")])]
-    public function notifGet() {}
 }

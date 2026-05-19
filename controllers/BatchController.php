@@ -75,7 +75,7 @@ class BatchController {
         responses: [new OA\Response(response: 201, description: "Inbound inventory actively added properly")]
     )]
     public function store($input) {
-        $user = authenticate(['manager']);
+        $user = authenticate(['admin', 'manager']);
         
         $medicine_id = $input['medicine_id'] ?? null;
         $batch_number = $input['batch_number'] ?? null;
@@ -125,7 +125,7 @@ class BatchController {
         // According to the guide, FEFO means "When a sale is recorded against a medicine (not a specific batch), the API must auto-select the batch expiring soonest."
         // Wait, the API endpoint is `POST /api/batches/{id}/sell` which implies an ID of a medicine because the payload has `{ "quantity": 50, "reference": "INV-1023" }` and the guide says "When a sale is recorded against a medicine (not a specific batch)". Wait, the route says `/api/batches/{id}/sell`, so is `{id}` the medicine ID or batch ID?
         // Let's assume it's `medicine_id` as per section 7 "sell against a medicine"
-        $user = authenticate(['manager']);
+        $user = authenticate(['admin', 'manager']);
         
         $quantity = $input['quantity'] ?? 0;
         $reference = $input['reference'] ?? '';
@@ -172,8 +172,9 @@ class BatchController {
 
             // Check Low Stock
             $stockStmt = $this->pdo->prepare("
-                SELECT SUM(b.quantity) as total_stock, m.reorder_point 
-                FROM batches b JOIN medicines m ON b.medicine_id = m.id 
+                SELECT COALESCE(SUM(b.quantity), 0) as total_stock, m.reorder_point 
+                FROM medicines m 
+                LEFT JOIN batches b ON m.id = b.medicine_id AND b.expiry_date >= CURDATE()
                 WHERE m.id = ? GROUP BY m.id
             ");
             $stockStmt->execute([$medicine_id]);

@@ -23,7 +23,7 @@ class MedicineController {
         $stmt = $this->pdo->query("
             SELECT m.*, COALESCE(SUM(b.quantity), 0) as current_stock 
             FROM medicines m 
-            LEFT JOIN batches b ON m.id = b.medicine_id 
+            LEFT JOIN batches b ON m.id = b.medicine_id AND b.expiry_date >= CURDATE()
             GROUP BY m.id
         ");
         $medicines = $stmt->fetchAll();
@@ -49,7 +49,7 @@ class MedicineController {
         $stmt = $this->pdo->prepare("
             SELECT m.*, COALESCE(SUM(b.quantity), 0) as current_stock 
             FROM medicines m 
-            LEFT JOIN batches b ON m.id = b.medicine_id 
+            LEFT JOIN batches b ON m.id = b.medicine_id AND b.expiry_date >= CURDATE()
             WHERE m.id = ?
             GROUP BY m.id
         ");

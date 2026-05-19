@@ -65,22 +65,31 @@ class ReportController {
         parameters: [new OA\Parameter(name: "batch_number", in: "query", required: true, schema: new OA\Schema(type: "string"))],
         responses: [new OA\Response(response: 200, description: "Cross-referenced sales analytics for batch")]
     )]
-    public function batchSales($batch_number) {
+    public function batchSales($batch_number = null) {
         authenticate(['admin', 'manager']);
 
         if (!$batch_number) {
-            response(400, false, null, 'Batch number is required');
+            $stmt = $this->pdo->prepare("
+                SELECT t.*, b.batch_number, u.name as created_by_name 
+                FROM transactions t
+                JOIN batches b ON t.batch_id = b.id
+                LEFT JOIN users u ON t.created_by = u.id
+                WHERE t.type = 'out'
+                ORDER BY t.created_at DESC
+                LIMIT 50
+            ");
+            $stmt->execute();
+        } else {
+            $stmt = $this->pdo->prepare("
+                SELECT t.*, b.batch_number, u.name as created_by_name 
+                FROM transactions t
+                JOIN batches b ON t.batch_id = b.id
+                LEFT JOIN users u ON t.created_by = u.id
+                WHERE b.batch_number = ? AND t.type = 'out'
+                ORDER BY t.created_at DESC
+            ");
+            $stmt->execute([$batch_number]);
         }
-
-        $stmt = $this->pdo->prepare("
-            SELECT t.*, u.name as created_by_name 
-            FROM transactions t
-            JOIN batches b ON t.batch_id = b.id
-            LEFT JOIN users u ON t.created_by = u.id
-            WHERE b.batch_number = ? AND t.type = 'out'
-            ORDER BY t.created_at DESC
-        ");
-        $stmt->execute([$batch_number]);
 
         response(200, true, $stmt->fetchAll(), 'Batch sales retrieved');
     }

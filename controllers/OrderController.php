@@ -22,7 +22,7 @@ class OrderController {
             SELECT m.id as medicine_id, m.name, m.reorder_point,
                    COALESCE(SUM(b.quantity), 0) as current_stock
             FROM medicines m
-            LEFT JOIN batches b ON m.id = b.medicine_id
+            LEFT JOIN batches b ON m.id = b.medicine_id AND b.expiry_date >= CURDATE()
             GROUP BY m.id
             HAVING current_stock < m.reorder_point
         ");
@@ -61,7 +61,7 @@ class OrderController {
         responses: [new OA\Response(response: 201, description: "Successfully established remote purchase intent algorithm")]
     )]
     public function store($input) {
-        $user = authenticate(['manager']);
+        $user = authenticate(['admin', 'manager']);
         
         $medicine_id = $input['medicine_id'] ?? null;
         $quantity = $input['quantity'] ?? null;
