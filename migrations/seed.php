@@ -49,30 +49,36 @@ try {
     // 3. Seed Batches (and initial stock entries)
     echo "Seeding Batches...\n";
     
-    // Get medicine IDs
-    $medIds = $pdo->query("SELECT id, name FROM medicines")->fetchAll(PDO::FETCH_KEY_PAIR);
-    // medIds format: [1 => 'Paracetamol 500mg', 2 => 'Amoxicillin 250mg' ...]
+    // Get medicine IDs and prices
+    $meds = $pdo->query("SELECT id, name, price FROM medicines")->fetchAll(PDO::FETCH_ASSOC);
 
     $batches = [];
-    foreach ($medIds as $id => $name) {
+    foreach ($meds as $med) {
+        $id = $med['id'];
+        $price = $med['price'];
+        // Assume unit purchase cost is 60% of retail price to simulate profit margin
+        $unitCost = round($price * 0.60, 2);
+
         // Create 2 batches for each medicine
         $batches[] = [
             $id,
             'BATCH-' . date('Y') . '-' . rand(1000, 9999),
             date('Y-m-d', strtotime('-1 months')),
             date('Y-m-d', strtotime('+12 months')), // Green
-            rand(100, 300)
+            rand(100, 300),
+            $unitCost
         ];
         $batches[] = [
             $id,
             'CRIT-' . date('Y') . '-' . rand(1000, 9999),
             date('Y-m-d', strtotime('-24 months')),
             date('Y-m-d', strtotime('+20 days')), // Red (Critical)
-            rand(20, 50)
+            rand(20, 50),
+            $unitCost
         ];
     }
 
-    $batchStmt = $pdo->prepare("INSERT INTO batches (medicine_id, batch_number, mfg_date, expiry_date, quantity) VALUES (?, ?, ?, ?, ?)");
+    $batchStmt = $pdo->prepare("INSERT INTO batches (medicine_id, batch_number, mfg_date, expiry_date, quantity, unit_cost) VALUES (?, ?, ?, ?, ?, ?)");
     $txStmt = $pdo->prepare("INSERT INTO transactions (batch_id, type, quantity, reference, created_by) VALUES (?, 'in', ?, 'INITIAL_SEED', ?)");
 
     foreach ($batches as $b) {

@@ -46,10 +46,10 @@ function sendLowStockEmail($fallbackEmail, $medicineName, $currentStock, $reorde
     $headers .= "From: wms@pharma-stock.local" . "\r\n";
 
     // Uncomment this line to physically send in production with a configured sendmail server
-    // mail($adminEmail, $subject, $message, $headers);
+    // mail($targetEmail, $subject, $message, $headers);
     
     // We log it successfully for demonstration and safety in local environments
-    error_log("Simulated Email Sent to $adminEmail: Low stock for $medicineName ($currentStock left)");
+    error_log("Simulated Email Sent to $targetEmail: Low stock for $medicineName ($currentStock left)");
     error_log("---------------------------------------");
     
     return true;

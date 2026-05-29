@@ -87,7 +87,7 @@ class MedicineController {
         ]
     )]
     public function store($input) {
-        authenticate(['admin']);
+        $user = authenticate(['admin']);
         
         $name = $input['name'] ?? null;
         $manufacturer = $input['manufacturer'] ?? null;
@@ -101,8 +101,12 @@ class MedicineController {
 
         $stmt = $this->pdo->prepare("INSERT INTO medicines (name, manufacturer, category, price, reorder_point) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$name, $manufacturer, $category, $price, $reorder_point]);
+        $newId = $this->pdo->lastInsertId();
         
-        response(201, true, ['id' => $this->pdo->lastInsertId()], 'Medicine created');
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($user->sub, 'Created medicine catalog entry', "Medicine: $name, Price: ₹$price");
+
+        response(201, true, ['id' => $newId], 'Medicine created');
     }
 
     #[OA\Put(
@@ -128,7 +132,7 @@ class MedicineController {
         ]
     )]
     public function update($id, $input) {
-        authenticate(['admin', 'manager']);
+        $user = authenticate(['admin', 'manager']);
         
         $updates = [];
         $params = [];
@@ -150,6 +154,9 @@ class MedicineController {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
 
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($user->sub, 'Updated medicine catalog entry', "Medicine ID: $id, Details: " . json_encode($input));
+
         response(200, true, null, 'Medicine updated');
     }
 
@@ -166,10 +173,18 @@ class MedicineController {
         ]
     )]
     public function destroy($id) {
-        authenticate(['admin']);
+        $user = authenticate(['admin']);
         
+        // Fetch medicine name for audit trail logging
+        $medStmt = $this->pdo->prepare("SELECT name FROM medicines WHERE id = ?");
+        $medStmt->execute([$id]);
+        $medName = $medStmt->fetchColumn();
+
         $stmt = $this->pdo->prepare("DELETE FROM medicines WHERE id = ?");
         $stmt->execute([$id]);
+
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($user->sub, 'Deleted medicine catalog entry', "Medicine ID: $id, Name: " . ($medName ?? 'unknown'));
 
         response(200, true, null, 'Medicine deleted');
     }

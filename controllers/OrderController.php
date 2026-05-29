@@ -73,8 +73,12 @@ class OrderController {
 
         $stmt = $this->pdo->prepare("INSERT INTO purchase_orders (medicine_id, quantity, supplier_id, created_by) VALUES (?, ?, ?, ?)");
         $stmt->execute([$medicine_id, $quantity, $supplier_id, $user->sub]);
+        $newId = $this->pdo->lastInsertId();
 
-        response(201, true, ['id' => $this->pdo->lastInsertId()], 'Purchase order generated');
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($user->sub, 'Drafted Purchase Order', "PO ID: $newId, Medicine ID: $medicine_id, Qty: $quantity");
+
+        response(201, true, ['id' => $newId], 'Purchase order generated');
     }
 
     #[OA\Put(
@@ -89,7 +93,7 @@ class OrderController {
         responses: [new OA\Response(response: 200, description: "Successfully integrated workflow adjustment parameters")]
     )]
     public function updateStatus($id, $input) {
-        authenticate(['admin']);
+        $user = authenticate(['admin']);
         
         $status = $input['status'] ?? null;
         $allowedStatuses = ['pending', 'approved', 'received'];
@@ -101,6 +105,9 @@ class OrderController {
         try {
             $stmt = $this->pdo->prepare("UPDATE purchase_orders SET status = ? WHERE id = ?");
             $stmt->execute([$status, $id]);
+            
+            require_once __DIR__ . '/../helpers/log.php';
+            logActivity($user->sub, 'Updated Purchase Order status', "PO ID: $id, New Status: $status");
             
             if ($status === 'approved') {
                 $poStmt = $this->pdo->prepare("SELECT created_by, medicine_id FROM purchase_orders WHERE id = ?");

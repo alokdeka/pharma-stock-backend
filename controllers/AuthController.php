@@ -37,11 +37,20 @@ class AuthController {
             response(400, false, null, 'Email and password are required');
         }
 
-        $stmt = $this->pdo->prepare("SELECT id, name, email, password, role FROM users WHERE email = ?");
+        $stmt = $this->pdo->prepare("SELECT id, name, email, password, role, status FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
+            require_once __DIR__ . '/../helpers/log.php';
+            
+            if ($user['status'] === 'suspended') {
+                logActivity($user['id'], 'Blocked login attempt (account suspended)', "Email: $email");
+                response(403, false, null, 'Your account is suspended. Please contact your Administrator.');
+            }
+
+            logActivity($user['id'], 'User logged in successfully');
+
             $secret = $_ENV['JWT_SECRET'] ?? getenv('JWT_SECRET');
             $payload = [
                 'sub' => $user['id'],
@@ -58,6 +67,8 @@ class AuthController {
                 'role'  => $user['role'],
             ], 'Login successful');
         } else {
+            require_once __DIR__ . '/../helpers/log.php';
+            logActivity(null, 'Failed login attempt', "Attempted Email: $email");
             response(401, false, null, 'Invalid email or password');
         }
     }
@@ -71,9 +82,9 @@ class AuthController {
         ]
     )]
     public function logout() {
-        // Stateless JWT logout implies the client should drop the token. 
-        // We just return a success message here.
-        authenticate(); // ensure user is logged in even though we just return success
+        $user = authenticate(); 
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($user->sub, 'User logged out');
         response(200, true, null, 'Logged out successfully');
     }
 
@@ -101,7 +112,11 @@ class AuthController {
 
         $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->execute([$email]);
-        if (!$stmt->fetch()) {
+        $userRow = $stmt->fetch();
+        
+        if (!$userRow) {
+            require_once __DIR__ . '/../helpers/log.php';
+            logActivity(null, 'Password reset requested for unregistered email', "Email: $email");
             response(404, false, null, 'Email address not found in the system.');
         }
 
@@ -113,6 +128,9 @@ class AuthController {
 
         require_once __DIR__ . '/../helpers/email.php';
         sendPasswordResetEmail($email, $token);
+
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($userRow['id'], 'Password reset link requested');
 
         response(200, true, null, 'A recovery link has been dispatched to your email address.');
     }
@@ -158,6 +176,9 @@ class AuthController {
         
         $updStmt = $this->pdo->prepare("UPDATE users SET password = ?, reset_token = NULL, reset_expires = NULL WHERE id = ?");
         $updStmt->execute([$hash, $user['id']]);
+
+        require_once __DIR__ . '/../helpers/log.php';
+        logActivity($user['id'], 'Password reset completed');
 
         response(200, true, null, 'Password successfully reset.');
     }

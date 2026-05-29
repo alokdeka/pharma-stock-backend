@@ -102,6 +102,10 @@ class BatchController {
             $stmt->execute([$batch_id, $quantity, 'INITIAL_STOCK', $user->sub]);
 
             $this->pdo->commit();
+
+            require_once __DIR__ . '/../helpers/log.php';
+            logActivity($user->sub, 'Recorded inbound medicine batch', "Batch: $batch_number, Medicine ID: $medicine_id, Qty: $quantity, Cost: ₹$unit_cost");
+
             response(201, true, ['id' => $batch_id], 'Batch created');
         } catch (Exception $e) {
             $this->pdo->rollBack();
@@ -182,6 +186,9 @@ class BatchController {
 
             $this->pdo->commit();
 
+            require_once __DIR__ . '/../helpers/log.php';
+            logActivity($user->sub, 'Recorded medicine sale (FEFO)', "Medicine ID: $medicine_id, Total Qty: $quantity, Sold from: " . json_encode($soldBatches));
+
             $alert = ($stockData && $stockData['total_stock'] < $stockData['reorder_point']);
 
             // Phase 3: Email Notification Engine Trigger
@@ -239,6 +246,10 @@ class BatchController {
             $txStmt->execute([$id, $quantity, $reason, $user->sub]);
 
             $this->pdo->commit();
+
+            require_once __DIR__ . '/../helpers/log.php';
+            logActivity($user->sub, 'Recorded stock spoilage write-off', "Batch ID: $id, Qty: $quantity, Reason: $reason");
+
             response(200, true, null, 'Stock marked as spoiled');
         } catch (Exception $e) {
             $this->pdo->rollBack();
