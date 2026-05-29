@@ -1,5 +1,5 @@
 {
-    "name": "alokdeka/pharma-stock",
+    "name": "pharma-stock/backend",
     "description": "Pharma-Stock WMS PHP API",
     "type": "project",
     "require": {
