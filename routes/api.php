@@ -125,6 +125,8 @@ switch ($resource) {
             $controller->transactions($_GET['from'] ?? '', $_GET['to'] ?? '');
         } elseif ($method === 'GET' && $id === 'financials') {
             $controller->financials();
+        } elseif ($method === 'GET' && $id === 'calendar-events') {
+            $controller->calendarEvents();
         } else {
             response(404, false, null, 'Endpoint not found');
         }

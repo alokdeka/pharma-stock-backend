@@ -169,4 +169,103 @@ class ReportController {
 
         response(200, true, $stmt->fetch(PDO::FETCH_ASSOC), 'Financials retrieved');
     }
+
+    #[OA\Get(
+        path: "/reports/calendar-events",
+        summary: "Retrieve consolidated WMS calendar events",
+        tags: ["Analytics & Reports"],
+        security: [["bearerAuth" => []]],
+        responses: [new OA\Response(response: 200, description: "Consolidated events retrieved successfully")]
+    )]
+    public function calendarEvents() {
+        authenticate();
+
+        $events = [];
+
+        // 1. Medicine Expirations (Red)
+        $expiryStmt = $this->pdo->query("
+            SELECT b.id as id, b.expiry_date as date, 
+                   b.batch_number as title, m.name as medicine_name, b.quantity as quantity,
+                   b.location as location
+            FROM batches b
+            JOIN medicines m ON b.medicine_id = m.id
+            WHERE b.quantity > 0
+        ");
+        foreach ($expiryStmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $events[] = [
+                'id' => 'exp-' . $row['id'],
+                'ref_id' => $row['id'],
+                'type' => 'expiry',
+                'date' => $row['date'],
+                'title' => "Expiry: {$row['medicine_name']} ({$row['title']})",
+                'details' => "Batch {$row['title']} of {$row['medicine_name']} expiring on this date. Current quantity: {$row['quantity']} units. Storage: {$row['location']}.",
+                'color' => 'var(--status-red)'
+            ];
+        }
+
+        // 2. Purchase Orders Placed (Purple)
+        $poStmt = $this->pdo->query("
+            SELECT po.id as id, DATE(po.created_at) as date,
+                   m.name as medicine_name, po.quantity as quantity, po.status as status
+            FROM purchase_orders po
+            JOIN medicines m ON po.medicine_id = m.id
+        ");
+        foreach ($poStmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $events[] = [
+                'id' => 'po-' . $row['id'],
+                'ref_id' => $row['id'],
+                'type' => 'po',
+                'date' => $row['date'],
+                'title' => "PO #{$row['id']}: {$row['medicine_name']}",
+                'details' => "Purchase Order generated for {$row['quantity']} units of {$row['medicine_name']}. Current status: " . strtoupper($row['status']) . ".",
+                'color' => '#8b5cf6'
+            ];
+        }
+
+        // 3. Inbound Shipments Intake (Green)
+        $inboundStmt = $this->pdo->query("
+            SELECT t.id as id, DATE(t.created_at) as date,
+                   b.batch_number as batch_number, m.name as medicine_name, t.quantity as quantity,
+                   b.location as location, b.id as batch_id
+            FROM transactions t
+            JOIN batches b ON t.batch_id = b.id
+            JOIN medicines m ON b.medicine_id = m.id
+            WHERE t.type = 'in'
+        ");
+        foreach ($inboundStmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $events[] = [
+                'id' => 'in-' . $row['id'],
+                'ref_id' => $row['batch_id'],
+                'type' => 'inbound',
+                'date' => $row['date'],
+                'title' => "Intake: {$row['medicine_name']}",
+                'details' => "Logged inbound batch {$row['batch_number']} of {$row['medicine_name']} containing {$row['quantity']} units into bin {$row['location']}.",
+                'color' => 'var(--status-green)'
+            ];
+        }
+
+        // 4. Spoilage Loss Logs (Orange)
+        $spoilageStmt = $this->pdo->query("
+            SELECT t.id as id, DATE(t.created_at) as date,
+                   b.batch_number as batch_number, m.name as medicine_name, t.quantity as quantity,
+                   t.reference as reason, b.id as batch_id
+            FROM transactions t
+            JOIN batches b ON t.batch_id = b.id
+            JOIN medicines m ON b.medicine_id = m.id
+            WHERE t.type = 'spoilage'
+        ");
+        foreach ($spoilageStmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $events[] = [
+                'id' => 'spoil-' . $row['id'],
+                'ref_id' => $row['batch_id'],
+                'type' => 'spoilage',
+                'date' => $row['date'],
+                'title' => "Spoilage: {$row['medicine_name']}",
+                'details' => "Spoilage logged for {$row['quantity']} units of {$row['medicine_name']} (Batch {$row['batch_number']}). Reason: {$row['reason']}.",
+                'color' => '#f59e0b'
+            ];
+        }
+
+        response(200, true, $events, 'Calendar events compiled successfully');
+    }
 }
