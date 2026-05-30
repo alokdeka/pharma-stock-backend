@@ -70,7 +70,8 @@ class BatchController {
             new OA\Property(property: "expiry_date", type: "string", format: "date"),
             new OA\Property(property: "quantity", type: "integer"),
             new OA\Property(property: "location", type: "string"),
-            new OA\Property(property: "unit_cost", type: "number")
+            new OA\Property(property: "unit_cost", type: "number"),
+            new OA\Property(property: "po_id", type: "integer", nullable: true)
         ])),
         responses: [new OA\Response(response: 201, description: "Inbound inventory actively added properly")]
     )]
@@ -84,6 +85,7 @@ class BatchController {
         $quantity = $input['quantity'] ?? null;
         $location = $input['location'] ?? 'Main Warehouse';
         $unit_cost = $input['unit_cost'] ?? 0.00;
+        $po_id = $input['po_id'] ?? null;
 
         if (!$medicine_id || !$batch_number || !$mfg_date || !$expiry_date || $quantity === null) {
             response(400, false, null, 'All fields are required');
@@ -93,18 +95,33 @@ class BatchController {
             $this->pdo->beginTransaction();
 
             // Insert Batch
-            $stmt = $this->pdo->prepare("INSERT INTO batches (medicine_id, batch_number, mfg_date, expiry_date, quantity, location, unit_cost) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$medicine_id, $batch_number, $mfg_date, $expiry_date, $quantity, $location, $unit_cost]);
+            $stmt = $this->pdo->prepare("INSERT INTO batches (medicine_id, batch_number, mfg_date, expiry_date, quantity, location, unit_cost, po_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$medicine_id, $batch_number, $mfg_date, $expiry_date, $quantity, $location, $unit_cost, $po_id]);
             $batch_id = $this->pdo->lastInsertId();
 
             // Record transaction 'in'
+            $reference = $po_id ? "PO_INGESTION_#{$po_id}" : "INITIAL_STOCK";
             $stmt = $this->pdo->prepare("INSERT INTO transactions (batch_id, type, quantity, reference, created_by) VALUES (?, 'in', ?, ?, ?)");
-            $stmt->execute([$batch_id, $quantity, 'INITIAL_STOCK', $user->sub]);
+            $stmt->execute([$batch_id, $quantity, $reference, $user->sub]);
+
+            // Atomically update purchase order status if po_id is provided
+            if ($po_id) {
+                $poStmt = $this->pdo->prepare("SELECT status FROM purchase_orders WHERE id = ?");
+                $poStmt->execute([$po_id]);
+                $poStatus = $poStmt->fetchColumn();
+                if ($poStatus) {
+                    $updateStmt = $this->pdo->prepare("UPDATE purchase_orders SET status = 'received' WHERE id = ?");
+                    $updateStmt->execute([$po_id]);
+
+                    require_once __DIR__ . '/../helpers/log.php';
+                    logActivity($user->sub, 'Updated Purchase Order status via Batch Ingestion', "PO ID: $po_id, New Status: received");
+                }
+            }
 
             $this->pdo->commit();
 
             require_once __DIR__ . '/../helpers/log.php';
-            logActivity($user->sub, 'Recorded inbound medicine batch', "Batch: $batch_number, Medicine ID: $medicine_id, Qty: $quantity, Cost: ₹$unit_cost");
+            logActivity($user->sub, 'Recorded inbound medicine batch', "Batch: $batch_number, Medicine ID: $medicine_id, Qty: $quantity, Cost: ₹$unit_cost" . ($po_id ? " (PO #$po_id)" : ""));
 
             response(201, true, ['id' => $batch_id], 'Batch created');
         } catch (Exception $e) {
