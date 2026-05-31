@@ -132,6 +132,22 @@ switch ($resource) {
         }
         break;
 
+    case 'locations':
+        require_once __DIR__ . '/../controllers/LocationController.php';
+        $controller = new LocationController($pdo);
+        if ($method === 'GET' && !$id) {
+            $controller->index();
+        } elseif ($method === 'POST' && !$id) {
+            $controller->store($input);
+        } elseif ($method === 'PUT' && $id) {
+            $controller->update($id, $input);
+        } elseif ($method === 'DELETE' && $id) {
+            $controller->delete($id);
+        } else {
+            response(404, false, null, 'Endpoint not found');
+        }
+        break;
+
     case 'users':
         require_once __DIR__ . '/../controllers/UserController.php';
         break;
